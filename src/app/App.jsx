@@ -1,12 +1,20 @@
 import styles from './app.module.css';
 import data from './data.json';
+import { useState} from 'react';
 
 export const App = () => {
 	// Можно задать 2 состояния — steps и activeIndex
+  const [steps, setSteps] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
 	// И определить 3 обработчика: Клик назад, Клик вперед, Начать сначала
+  const handlePrevious = () => {}
+  const handleNext = () => {}
+  const handleReset = () => {}
 
 	// И 2 переменных-флага — находимся ли мы на первом шаге, и находимся ли на последнем
+  let isStepOnStart = false;
+  let isStepOnEnd = false;
 
 	return (
 		<div className={styles.container}>
