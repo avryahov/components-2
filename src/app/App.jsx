@@ -26,6 +26,16 @@ export const App = () => {
     setActiveIndex(index);
   };
 
+  const getStepClassName = (index) => {
+    return [
+      s['steps-item'],
+      index <= activeIndex ? s.done : '',
+      index === activeIndex ? s.active : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
+  };
+
   return (
     <div className={s.container}>
       <div className={s.card}>
@@ -38,9 +48,12 @@ export const App = () => {
             {
               steps.map((step, index) => (
                 <li
-                  className={s['steps-item'] + ' ' + (index <= activeIndex ? s.done : '') + ' ' + (index === activeIndex ? s.active : '')}
+                  className={getStepClassName(index)}
                   key={step.id}>
-                  <button className={s['steps-item-button']} onClick={() => handleStepClick(index)}>{index + 1}</button>
+                  <button className={s['steps-item-button']}
+                          onClick={() => handleStepClick(index)}>
+                    {index + 1}
+                  </button>
                   {step.title}
                 </li>))
             }
